@@ -29,6 +29,14 @@ public class CalculadoraAlbion extends javax.swing.JFrame {
     private void initComponents() {
 
         MenuPanel = new javax.swing.JPanel();
+        btnMinimizar = new javax.swing.JButton();
+        btnInicio = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
+        btnInicio1 = new javax.swing.JButton();
+        btnInicio2 = new javax.swing.JButton();
+        btnInicio3 = new javax.swing.JButton();
+        btnInicio4 = new javax.swing.JButton();
+        btnInicio5 = new javax.swing.JButton();
         ContenidoPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -38,19 +46,85 @@ public class CalculadoraAlbion extends javax.swing.JFrame {
 
         MenuPanel.setBackground(new java.awt.Color(0, 0, 51));
         MenuPanel.setForeground(new java.awt.Color(255, 255, 255));
+        MenuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout MenuPanelLayout = new javax.swing.GroupLayout(MenuPanel);
-        MenuPanel.setLayout(MenuPanelLayout);
-        MenuPanelLayout.setHorizontalGroup(
-            MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
-        );
-        MenuPanelLayout.setVerticalGroup(
-            MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
+        btnMinimizar.setText("-");
+        MenuPanel.add(btnMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
 
-        getContentPane().add(MenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        btnInicio.setForeground(new java.awt.Color(255, 255, 255));
+        btnInicio.setText("Inicio");
+        btnInicio.setBorderPainted(false);
+        btnInicio.setContentAreaFilled(false);
+        btnInicio.setDefaultCapable(false);
+        btnInicio.setEnabled(false);
+        btnInicio.setFocusPainted(false);
+        btnInicio.setFocusable(false);
+        btnInicio.setOpaque(true);
+        btnInicio.addActionListener(this::btnInicioActionPerformed);
+        MenuPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 250, 80));
+
+        btnCerrar.setText("X");
+        MenuPanel.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
+
+        btnInicio1.setForeground(new java.awt.Color(255, 255, 255));
+        btnInicio1.setText("Inicio");
+        btnInicio1.setContentAreaFilled(false);
+        btnInicio1.setDefaultCapable(false);
+        btnInicio1.setEnabled(false);
+        btnInicio1.setFocusable(false);
+        btnInicio1.setOpaque(true);
+        btnInicio1.addActionListener(this::btnInicio1ActionPerformed);
+        MenuPanel.add(btnInicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 250, 80));
+
+        btnInicio2.setForeground(new java.awt.Color(255, 255, 255));
+        btnInicio2.setText("Inicio");
+        btnInicio2.setBorderPainted(false);
+        btnInicio2.setContentAreaFilled(false);
+        btnInicio2.setDefaultCapable(false);
+        btnInicio2.setEnabled(false);
+        btnInicio2.setFocusPainted(false);
+        btnInicio2.setFocusable(false);
+        btnInicio2.setOpaque(true);
+        btnInicio2.addActionListener(this::btnInicio2ActionPerformed);
+        MenuPanel.add(btnInicio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 250, 80));
+
+        btnInicio3.setForeground(new java.awt.Color(255, 255, 255));
+        btnInicio3.setText("Inicio");
+        btnInicio3.setBorderPainted(false);
+        btnInicio3.setContentAreaFilled(false);
+        btnInicio3.setDefaultCapable(false);
+        btnInicio3.setEnabled(false);
+        btnInicio3.setFocusPainted(false);
+        btnInicio3.setFocusable(false);
+        btnInicio3.setOpaque(true);
+        btnInicio3.addActionListener(this::btnInicio3ActionPerformed);
+        MenuPanel.add(btnInicio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 250, 80));
+
+        btnInicio4.setForeground(new java.awt.Color(255, 255, 255));
+        btnInicio4.setText("Inicio");
+        btnInicio4.setBorderPainted(false);
+        btnInicio4.setContentAreaFilled(false);
+        btnInicio4.setDefaultCapable(false);
+        btnInicio4.setEnabled(false);
+        btnInicio4.setFocusPainted(false);
+        btnInicio4.setFocusable(false);
+        btnInicio4.setOpaque(true);
+        btnInicio4.addActionListener(this::btnInicio4ActionPerformed);
+        MenuPanel.add(btnInicio4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 250, 80));
+
+        btnInicio5.setForeground(new java.awt.Color(255, 255, 255));
+        btnInicio5.setText("Inicio");
+        btnInicio5.setBorderPainted(false);
+        btnInicio5.setContentAreaFilled(false);
+        btnInicio5.setDefaultCapable(false);
+        btnInicio5.setEnabled(false);
+        btnInicio5.setFocusPainted(false);
+        btnInicio5.setFocusable(false);
+        btnInicio5.setOpaque(true);
+        btnInicio5.addActionListener(this::btnInicio5ActionPerformed);
+        MenuPanel.add(btnInicio5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 250, 80));
+
+        getContentPane().add(MenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 800));
 
         ContenidoPanel.setBackground(new java.awt.Color(0, 0, 102));
         ContenidoPanel.setForeground(new java.awt.Color(255, 255, 255));
@@ -70,6 +144,30 @@ public class CalculadoraAlbion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void btnInicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInicio1ActionPerformed
+
+    private void btnInicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInicio2ActionPerformed
+
+    private void btnInicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInicio3ActionPerformed
+
+    private void btnInicio4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInicio4ActionPerformed
+
+    private void btnInicio5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicio5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInicio5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,5 +197,13 @@ public class CalculadoraAlbion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ContenidoPanel;
     private javax.swing.JPanel MenuPanel;
+    private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnInicio;
+    private javax.swing.JButton btnInicio1;
+    private javax.swing.JButton btnInicio2;
+    private javax.swing.JButton btnInicio3;
+    private javax.swing.JButton btnInicio4;
+    private javax.swing.JButton btnInicio5;
+    private javax.swing.JButton btnMinimizar;
     // End of variables declaration//GEN-END:variables
 }
