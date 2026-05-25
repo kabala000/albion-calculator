@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package panels;
 
@@ -8,12 +8,10 @@ package panels;
  *
  * @author vehuiah
  */
-public class CraftingPanel extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CraftingPanel.class.getName());
+public class CraftingPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CraftingPanel
+     * Creates new form CraftingPanel2
      */
     public CraftingPanel() {
         initComponents();
@@ -43,27 +41,6 @@ public class CraftingPanel extends javax.swing.JFrame {
         lblItemImage = new javax.swing.JLabel();
         lblItemName = new javax.swing.JLabel();
         lblProfit = new javax.swing.JLabel();
-        panelMaterials = new javax.swing.JPanel();
-        panelRest = new javax.swing.JPanel();
-        lblRestBestApi = new javax.swing.JLabel();
-        lblRestBestPrice = new javax.swing.JLabel();
-        lblRestQuantity = new javax.swing.JLabel();
-        lblRestImage = new javax.swing.JLabel();
-        panelMaterial1 = new javax.swing.JPanel();
-        lblMaterial1Image = new javax.swing.JLabel();
-        lblMaterial1Quantity = new javax.swing.JLabel();
-        lblMaterial1BestPrice = new javax.swing.JLabel();
-        lblMaterial1BestApi = new javax.swing.JLabel();
-        panelMaterial2 = new javax.swing.JPanel();
-        lblMaterial2Image = new javax.swing.JLabel();
-        lblMaterial2Quantity = new javax.swing.JLabel();
-        lblMaterial2BestPrice = new javax.swing.JLabel();
-        lblMaterial2BestApi = new javax.swing.JLabel();
-        panelArtifact = new javax.swing.JPanel();
-        lblArtifactBestApi = new javax.swing.JLabel();
-        lblArtifactBestPrice = new javax.swing.JLabel();
-        lblArtifactQuantity = new javax.swing.JLabel();
-        lblArtifactImage = new javax.swing.JLabel();
         panelCitiesMarket = new javax.swing.JPanel();
         cardLymhurst = new javax.swing.JPanel();
         lblLymhurst = new javax.swing.JLabel();
@@ -100,10 +77,29 @@ public class CraftingPanel extends javax.swing.JFrame {
         txtBlackMarketSellPrice = new javax.swing.JTextField();
         lblBlackMarketApi = new javax.swing.JLabel();
         chkSellBlackMarket = new javax.swing.JCheckBox();
+        panelMaterials = new javax.swing.JPanel();
+        panelRest = new javax.swing.JPanel();
+        lblRestBestApi = new javax.swing.JLabel();
+        lblRestBestPrice = new javax.swing.JLabel();
+        lblRestQuantity = new javax.swing.JLabel();
+        lblRestImage = new javax.swing.JLabel();
+        panelMaterial1 = new javax.swing.JPanel();
+        lblMaterial1Image = new javax.swing.JLabel();
+        lblMaterial1Quantity = new javax.swing.JLabel();
+        lblMaterial1BestPrice = new javax.swing.JLabel();
+        lblMaterial1BestApi = new javax.swing.JLabel();
+        panelMaterial2 = new javax.swing.JPanel();
+        lblMaterial2Image = new javax.swing.JLabel();
+        lblMaterial2Quantity = new javax.swing.JLabel();
+        lblMaterial2BestPrice = new javax.swing.JLabel();
+        lblMaterial2BestApi = new javax.swing.JLabel();
+        panelArtifact = new javax.swing.JPanel();
+        lblArtifactBestApi = new javax.swing.JLabel();
+        lblArtifactBestPrice = new javax.swing.JLabel();
+        lblArtifactQuantity = new javax.swing.JLabel();
+        lblArtifactImage = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 0, 0));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelSelector.setBackground(new java.awt.Color(22, 22, 30));
         panelSelector.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 180), 2));
@@ -156,7 +152,7 @@ public class CraftingPanel extends javax.swing.JFrame {
         txtAmount.setText("1");
         panelSelector.add(txtAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 100, 38));
 
-        getContentPane().add(panelSelector, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 420, 300));
+        add(panelSelector, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 420, 300));
 
         panelItemPreview.setBackground(new java.awt.Color(22, 22, 30));
         panelItemPreview.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 180, 255)));
@@ -178,105 +174,7 @@ public class CraftingPanel extends javax.swing.JFrame {
         lblProfit.setText("Profit: 0");
         panelItemPreview.add(lblProfit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 255, 220, 30));
 
-        getContentPane().add(panelItemPreview, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 260, 300));
-
-        panelMaterials.setBackground(new java.awt.Color(22, 22, 30));
-        panelMaterials.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(180, 0, 255), 2));
-        panelMaterials.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        panelRest.setBackground(new java.awt.Color(30, 30, 40));
-        panelRest.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 180)));
-        panelRest.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblRestBestApi.setForeground(new java.awt.Color(120, 120, 255));
-        lblRestBestApi.setText("API");
-        panelRest.add(lblRestBestApi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 185, 180, 25));
-
-        lblRestBestPrice.setForeground(new java.awt.Color(0, 255, 180));
-        lblRestBestPrice.setText("Precio");
-        panelRest.add(lblRestBestPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 155, 180, 25));
-
-        lblRestQuantity.setForeground(new java.awt.Color(255, 255, 255));
-        lblRestQuantity.setText("Cantidad");
-        panelRest.add(lblRestQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, 180, 25));
-
-        lblRestImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRestImage.setText("Imagen");
-        lblRestImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 255)));
-        panelRest.add(lblRestImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 100, 100));
-
-        panelMaterials.add(panelRest, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 220, 220));
-
-        panelMaterial1.setBackground(new java.awt.Color(30, 30, 40));
-        panelMaterial1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 180)));
-        panelMaterial1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblMaterial1Image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMaterial1Image.setText("Imagen");
-        lblMaterial1Image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 255)));
-        panelMaterial1.add(lblMaterial1Image, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 100, 100));
-
-        lblMaterial1Quantity.setForeground(new java.awt.Color(255, 255, 255));
-        lblMaterial1Quantity.setText("Cantidad");
-        panelMaterial1.add(lblMaterial1Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, 180, 25));
-
-        lblMaterial1BestPrice.setForeground(new java.awt.Color(0, 255, 180));
-        lblMaterial1BestPrice.setText("Precio");
-        panelMaterial1.add(lblMaterial1BestPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 155, 180, 25));
-
-        lblMaterial1BestApi.setForeground(new java.awt.Color(120, 120, 255));
-        lblMaterial1BestApi.setText("API");
-        panelMaterial1.add(lblMaterial1BestApi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 185, 180, 25));
-
-        panelMaterials.add(panelMaterial1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 220));
-
-        panelMaterial2.setBackground(new java.awt.Color(30, 30, 40));
-        panelMaterial2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 180)));
-        panelMaterial2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblMaterial2Image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMaterial2Image.setText("Imagen");
-        lblMaterial2Image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 255)));
-        panelMaterial2.add(lblMaterial2Image, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 100, 100));
-
-        lblMaterial2Quantity.setForeground(new java.awt.Color(255, 255, 255));
-        lblMaterial2Quantity.setText("Cantidad");
-        panelMaterial2.add(lblMaterial2Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, 180, 25));
-
-        lblMaterial2BestPrice.setForeground(new java.awt.Color(0, 255, 180));
-        lblMaterial2BestPrice.setText("Precio");
-        panelMaterial2.add(lblMaterial2BestPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 155, 180, 25));
-
-        lblMaterial2BestApi.setForeground(new java.awt.Color(120, 120, 255));
-        lblMaterial2BestApi.setText("API");
-        panelMaterial2.add(lblMaterial2BestApi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 185, 180, 25));
-
-        panelMaterials.add(panelMaterial2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 220, 220));
-
-        panelArtifact.setBackground(new java.awt.Color(30, 30, 40));
-        panelArtifact.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 180)));
-        panelArtifact.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblArtifactBestApi.setForeground(new java.awt.Color(120, 120, 255));
-        lblArtifactBestApi.setText("API");
-        panelArtifact.add(lblArtifactBestApi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 185, 180, 25));
-
-        lblArtifactBestPrice.setForeground(new java.awt.Color(0, 255, 180));
-        lblArtifactBestPrice.setText("Precio");
-        panelArtifact.add(lblArtifactBestPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 155, 180, 25));
-
-        lblArtifactQuantity.setForeground(new java.awt.Color(255, 255, 255));
-        lblArtifactQuantity.setText("Cantidad");
-        panelArtifact.add(lblArtifactQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, 180, 25));
-
-        lblArtifactImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblArtifactImage.setText("Imagen");
-        lblArtifactImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 255)));
-        panelArtifact.add(lblArtifactImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 100, 100));
-
-        panelMaterials.add(panelArtifact, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 220, 220));
-
-        getContentPane().add(panelMaterials, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 1000, 260));
+        add(panelItemPreview, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 260, 300));
 
         panelCitiesMarket.setBackground(new java.awt.Color(22, 22, 30));
         panelCitiesMarket.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 120, 0), 2));
@@ -408,35 +306,107 @@ public class CraftingPanel extends javax.swing.JFrame {
 
         panelCitiesMarket.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 420, 230, 110));
 
-        getContentPane().add(panelCitiesMarket, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 20, 520, 580));
+        add(panelCitiesMarket, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 520, 550));
 
-        pack();
+        panelMaterials.setBackground(new java.awt.Color(22, 22, 30));
+        panelMaterials.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(180, 0, 255), 2));
+        panelMaterials.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelRest.setBackground(new java.awt.Color(30, 30, 40));
+        panelRest.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 180)));
+        panelRest.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblRestBestApi.setForeground(new java.awt.Color(120, 120, 255));
+        lblRestBestApi.setText("API");
+        panelRest.add(lblRestBestApi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 185, 180, 25));
+
+        lblRestBestPrice.setForeground(new java.awt.Color(0, 255, 180));
+        lblRestBestPrice.setText("Precio");
+        panelRest.add(lblRestBestPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 155, 180, 25));
+
+        lblRestQuantity.setForeground(new java.awt.Color(255, 255, 255));
+        lblRestQuantity.setText("Cantidad");
+        panelRest.add(lblRestQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, 180, 25));
+
+        lblRestImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRestImage.setText("Imagen");
+        lblRestImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 255)));
+        panelRest.add(lblRestImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 100, 100));
+
+        panelMaterials.add(panelRest, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 220, 220));
+
+        panelMaterial1.setBackground(new java.awt.Color(30, 30, 40));
+        panelMaterial1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 180)));
+        panelMaterial1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblMaterial1Image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMaterial1Image.setText("Imagen");
+        lblMaterial1Image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 255)));
+        panelMaterial1.add(lblMaterial1Image, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 100, 100));
+
+        lblMaterial1Quantity.setForeground(new java.awt.Color(255, 255, 255));
+        lblMaterial1Quantity.setText("Cantidad");
+        panelMaterial1.add(lblMaterial1Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, 180, 25));
+
+        lblMaterial1BestPrice.setForeground(new java.awt.Color(0, 255, 180));
+        lblMaterial1BestPrice.setText("Precio");
+        panelMaterial1.add(lblMaterial1BestPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 155, 180, 25));
+
+        lblMaterial1BestApi.setForeground(new java.awt.Color(120, 120, 255));
+        lblMaterial1BestApi.setText("API");
+        panelMaterial1.add(lblMaterial1BestApi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 185, 180, 25));
+
+        panelMaterials.add(panelMaterial1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 220));
+
+        panelMaterial2.setBackground(new java.awt.Color(30, 30, 40));
+        panelMaterial2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 180)));
+        panelMaterial2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblMaterial2Image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMaterial2Image.setText("Imagen");
+        lblMaterial2Image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 255)));
+        panelMaterial2.add(lblMaterial2Image, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 100, 100));
+
+        lblMaterial2Quantity.setForeground(new java.awt.Color(255, 255, 255));
+        lblMaterial2Quantity.setText("Cantidad");
+        panelMaterial2.add(lblMaterial2Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, 180, 25));
+
+        lblMaterial2BestPrice.setForeground(new java.awt.Color(0, 255, 180));
+        lblMaterial2BestPrice.setText("Precio");
+        panelMaterial2.add(lblMaterial2BestPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 155, 180, 25));
+
+        lblMaterial2BestApi.setForeground(new java.awt.Color(120, 120, 255));
+        lblMaterial2BestApi.setText("API");
+        panelMaterial2.add(lblMaterial2BestApi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 185, 180, 25));
+
+        panelMaterials.add(panelMaterial2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 220, 220));
+
+        panelArtifact.setBackground(new java.awt.Color(30, 30, 40));
+        panelArtifact.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 180)));
+        panelArtifact.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblArtifactBestApi.setForeground(new java.awt.Color(120, 120, 255));
+        lblArtifactBestApi.setText("API");
+        panelArtifact.add(lblArtifactBestApi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 185, 180, 25));
+
+        lblArtifactBestPrice.setForeground(new java.awt.Color(0, 255, 180));
+        lblArtifactBestPrice.setText("Precio");
+        panelArtifact.add(lblArtifactBestPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 155, 180, 25));
+
+        lblArtifactQuantity.setForeground(new java.awt.Color(255, 255, 255));
+        lblArtifactQuantity.setText("Cantidad");
+        panelArtifact.add(lblArtifactQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, 180, 25));
+
+        lblArtifactImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblArtifactImage.setText("Imagen");
+        lblArtifactImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 255)));
+        panelArtifact.add(lblArtifactImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 100, 100));
+
+        panelMaterials.add(panelArtifact, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 220, 220));
+
+        add(panelMaterials, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 1000, 260));
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new CraftingPanel().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel cardBridgewatch;
