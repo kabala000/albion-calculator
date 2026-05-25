@@ -170,6 +170,7 @@ public class CraftingPanel extends javax.swing.JPanel {
         panelItemPreview.add(lblItemName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 215, 220, 30));
 
         lblProfit.setBackground(new java.awt.Color(0, 255, 180));
+        lblProfit.setForeground(new java.awt.Color(255, 255, 255));
         lblProfit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblProfit.setText("Profit: 0");
         panelItemPreview.add(lblProfit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 255, 220, 30));
