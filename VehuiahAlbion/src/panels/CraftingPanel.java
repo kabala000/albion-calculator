@@ -8,6 +8,11 @@ package panels;
  *
  * @author vehuiah
  */
+
+import database.HerreroData;
+import model.CraftItem;
+
+
 public class CraftingPanel extends javax.swing.JPanel {
 
     /**
@@ -15,8 +20,71 @@ public class CraftingPanel extends javax.swing.JPanel {
      */
     public CraftingPanel() {
         initComponents();
+        loadItemsByCategory();
+    }
+ 
+ 
+    private void loadItemsByCategory() {
+
+    cmbItem.removeAllItems();
+
+    String selectedCategory =
+            cmbCategory.getSelectedItem().toString();
+
+    if (selectedCategory.equals("Herrero")) {
+
+        for (CraftItem item : HerreroData.items) {
+
+            cmbItem.addItem(item.getItemName());
+
+        }
+
     }
 
+}
+    
+    private void loadItemImage() {
+
+    String selectedItem =
+            cmbItem.getSelectedItem().toString();
+
+    String selectedTier =
+            cmbTier.getSelectedItem().toString();
+
+    String selectedEnchant =
+            cmbEnchant.getSelectedItem().toString();
+
+    for (CraftItem item : HerreroData.items) {
+
+        if (item.getItemName().equals(selectedItem)) {
+
+            String imageName =
+                    item.getItemImage();
+
+            imageName =
+                    imageName.replace("T4", selectedTier);
+
+            if (selectedEnchant.equals(".0")) {
+
+                imageName =
+                        imageName + ".png";
+
+            } else {
+
+                String enchantLevel =
+                        selectedEnchant.replace(".", "");
+
+                imageName =
+                        imageName + "@" + enchantLevel + ".png";
+            }
+
+            System.out.println(imageName);
+
+        }
+
+    }
+
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -114,6 +182,7 @@ public class CraftingPanel extends javax.swing.JPanel {
         cmbCategory.setForeground(new java.awt.Color(255, 255, 255));
         cmbCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Herrero", "Herrero Mágico", "Flechero", "Hojalatero" }));
         cmbCategory.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        cmbCategory.addActionListener(this::cmbCategoryActionPerformed);
         panelSelector.add(cmbCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 240, 38));
 
         lblItem.setForeground(new java.awt.Color(220, 220, 220));
@@ -407,6 +476,10 @@ public class CraftingPanel extends javax.swing.JPanel {
 
         add(panelMaterials, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 1000, 260));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmbCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoryActionPerformed
+    loadItemsByCategory();    // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCategoryActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
