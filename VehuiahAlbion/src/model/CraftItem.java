@@ -98,4 +98,150 @@ public class CraftItem {
         return artifactImage;
     }
 
+    // =========================
+    // MATERIAL 1
+    // =========================
+
+    public String getMaterial1Name() {
+
+        if (bars > 0) {
+            return "Lingote";
+        }
+
+        if (wood > 0) {
+            return "Tabla";
+        }
+
+        if (cloth > 0) {
+            return "Tela";
+        }
+
+        if (leather > 0) {
+            return "Cuero";
+        }
+
+        return "N/A";
+    }
+
+    public int getMaterial1Quantity() {
+
+        if (bars > 0) {
+            return bars;
+        }
+
+        if (wood > 0) {
+            return wood;
+        }
+
+        if (cloth > 0) {
+            return cloth;
+        }
+
+        if (leather > 0) {
+            return leather;
+        }
+
+        return 0;
+    }
+
+    // =========================
+    // MATERIAL 2
+    // =========================
+
+    public String getMaterial2Name() {
+
+        int count = 0;
+
+        if (bars > 0) count++;
+        if (wood > 0) count++;
+        if (cloth > 0) count++;
+        if (leather > 0) count++;
+
+        if (count < 2) {
+            return "N/A";
+        }
+
+        boolean firstFound = false;
+
+        if (bars > 0) {
+            firstFound = true;
+        }
+
+        if (wood > 0) {
+
+            if (firstFound) {
+                return "Tabla";
+            }
+
+            firstFound = true;
+        }
+
+        if (cloth > 0) {
+
+            if (firstFound) {
+                return "Tela";
+            }
+
+            firstFound = true;
+        }
+
+        if (leather > 0) {
+
+            if (firstFound) {
+                return "Cuero";
+            }
+
+        }
+
+        return "N/A";
+    }
+
+    public int getMaterial2Quantity() {
+
+        int count = 0;
+
+        if (bars > 0) count++;
+        if (wood > 0) count++;
+        if (cloth > 0) count++;
+        if (leather > 0) count++;
+
+        if (count < 2) {
+            return 0;
+        }
+
+        boolean firstFound = false;
+
+        if (bars > 0) {
+            firstFound = true;
+        }
+
+        if (wood > 0) {
+
+            if (firstFound) {
+                return wood;
+            }
+
+            firstFound = true;
+        }
+
+        if (cloth > 0) {
+
+            if (firstFound) {
+                return cloth;
+            }
+
+            firstFound = true;
+        }
+
+        if (leather > 0) {
+
+            if (firstFound) {
+                return leather;
+            }
+
+        }
+
+        return 0;
+    }
+
 }
