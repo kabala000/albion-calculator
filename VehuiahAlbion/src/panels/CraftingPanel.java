@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package panels;
 
 /**
@@ -11,6 +7,9 @@ package panels;
 
 import database.HerreroData;
 import model.CraftItem;
+import javax.swing.ImageIcon;
+import java.awt.Image;
+
 
 
 public class CraftingPanel extends javax.swing.JPanel {
@@ -20,7 +19,9 @@ public class CraftingPanel extends javax.swing.JPanel {
      */
     public CraftingPanel() {
         initComponents();
-        loadItemsByCategory();
+         loadItemsByCategory();
+          loadItemImage();
+       
     }
  
  
@@ -42,8 +43,12 @@ public class CraftingPanel extends javax.swing.JPanel {
     }
 
 }
-    
-    private void loadItemImage() {
+   private void loadItemImage() {
+       
+    System.out.println("LOAD IMAGE");
+    if (cmbItem.getSelectedItem() == null) {
+        return;
+    }
 
     String selectedItem =
             cmbItem.getSelectedItem().toString();
@@ -64,21 +69,46 @@ public class CraftingPanel extends javax.swing.JPanel {
             imageName =
                     imageName.replace("T4", selectedTier);
 
-            if (selectedEnchant.equals(".0")) {
-
-                imageName =
-                        imageName + ".png";
-
-            } else {
+            if (!selectedEnchant.equals(".0")) {
 
                 String enchantLevel =
                         selectedEnchant.replace(".", "");
 
                 imageName =
-                        imageName + "@" + enchantLevel + ".png";
+                        imageName + "@" + enchantLevel;
             }
 
-            System.out.println(imageName);
+            imageName += ".png";
+
+           java.net.URL imageURL =
+        getClass().getResource(
+                "/resources/herrero/" + imageName
+        );
+
+System.out.println(imageURL);
+
+if (imageURL == null) {
+    System.out.println("NO EXISTE LA IMAGEN");
+    return;
+}
+
+ImageIcon icon =
+        new ImageIcon(imageURL);
+
+            Image image =
+                    icon.getImage().getScaledInstance(
+                            120,
+                            120,
+                            Image.SCALE_SMOOTH
+                    );
+
+            lblItemImage.setIcon(
+                    new ImageIcon(image)
+            );
+            lblItemName.setText(selectedItem);
+
+            lblItemImage.repaint();
+            lblItemImage.revalidate();
 
         }
 
@@ -192,6 +222,7 @@ public class CraftingPanel extends javax.swing.JPanel {
         cmbItem.setBackground(new java.awt.Color(35, 35, 45));
         cmbItem.setForeground(new java.awt.Color(255, 255, 255));
         cmbItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbItem.addActionListener(this::cmbItemActionPerformed);
         panelSelector.add(cmbItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 240, 38));
 
         lblTier.setForeground(new java.awt.Color(220, 220, 220));
@@ -201,6 +232,7 @@ public class CraftingPanel extends javax.swing.JPanel {
         cmbTier.setBackground(new java.awt.Color(35, 35, 45));
         cmbTier.setForeground(new java.awt.Color(255, 255, 255));
         cmbTier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "T4", "T5", "T6", "T7", "T8" }));
+        cmbTier.addActionListener(this::cmbTierActionPerformed);
         panelSelector.add(cmbTier, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 100, 38));
 
         lblEnchant.setForeground(new java.awt.Color(220, 220, 220));
@@ -210,6 +242,7 @@ public class CraftingPanel extends javax.swing.JPanel {
         cmbEnchant.setBackground(new java.awt.Color(35, 35, 45));
         cmbEnchant.setForeground(new java.awt.Color(255, 255, 255));
         cmbEnchant.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ".0", ".1", ".2", ".3", ".4" }));
+        cmbEnchant.addActionListener(this::cmbEnchantActionPerformed);
         panelSelector.add(cmbEnchant, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 100, 38));
 
         lblAmount.setForeground(new java.awt.Color(220, 220, 220));
@@ -219,6 +252,7 @@ public class CraftingPanel extends javax.swing.JPanel {
         txtAmount.setBackground(new java.awt.Color(35, 35, 45));
         txtAmount.setForeground(new java.awt.Color(255, 255, 255));
         txtAmount.setText("1");
+        txtAmount.addActionListener(this::txtAmountActionPerformed);
         panelSelector.add(txtAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 100, 38));
 
         add(panelSelector, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 420, 300));
@@ -229,8 +263,8 @@ public class CraftingPanel extends javax.swing.JPanel {
 
         lblItemImage.setBackground(new java.awt.Color(40, 40, 50));
         lblItemImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblItemImage.setText("Imagen ");
         lblItemImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 180)));
+        lblItemImage.setPreferredSize(new java.awt.Dimension(120, 120));
         panelItemPreview.add(lblItemImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 180, 180));
 
         lblItemName.setForeground(new java.awt.Color(255, 255, 255));
@@ -480,6 +514,26 @@ public class CraftingPanel extends javax.swing.JPanel {
     private void cmbCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoryActionPerformed
     loadItemsByCategory();    // TODO add your handling code here:
     }//GEN-LAST:event_cmbCategoryActionPerformed
+
+    private void cmbItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbItemActionPerformed
+
+    loadItemImage();       // TODO add your handling code here:
+    }//GEN-LAST:event_cmbItemActionPerformed
+
+    private void cmbTierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTierActionPerformed
+     
+     loadItemImage(); 
+    
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTierActionPerformed
+
+    private void cmbEnchantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEnchantActionPerformed
+       loadItemImage(); // TODO add your handling code here:
+    }//GEN-LAST:event_cmbEnchantActionPerformed
+
+    private void txtAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAmountActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -97,20 +97,5 @@ public class CraftItem {
     public String getArtifactImage() {
         return artifactImage;
     }
-    
-}
-public String getArtifact1() {
-    return artifact1;
-}
 
-public int getArtifact1Amount() {
-    return artifact1Amount;
-}
-
-public String getItemImage() {
-    return itemImage;
-}
-
-public String getArtifactImage() {
-    return artifactImage;
 }
