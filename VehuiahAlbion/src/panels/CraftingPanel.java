@@ -12,6 +12,7 @@ import java.awt.Image;
 import database.HerreroMagicoData;
 import database.FlecheroData;
 import database.HojalateroData;
+import java.util.List;
 
 
 
@@ -90,6 +91,33 @@ public class CraftingPanel extends javax.swing.JPanel {
     loadItemImage();
 
 }
+    
+    private java.util.List<CraftItem> getCurrentItems() {
+
+    String selectedCategory =
+            cmbCategory.getSelectedItem().toString();
+
+    if (selectedCategory.equals("Herrero")) {
+        return HerreroData.items;
+    }
+
+    if (selectedCategory.equals("Herrero Magico")) {
+        return HerreroMagicoData.items;
+    }
+
+    if (selectedCategory.equals("Flechero")) {
+        return FlecheroData.items;
+    }
+
+    if (selectedCategory.equals("Hojalatero")) {
+        return HojalateroData.items;
+    }
+
+    return HerreroData.items;
+}
+    
+    
+    
    private void loadItemImage() {
 
     System.out.println("LOAD IMAGE");
@@ -202,10 +230,7 @@ public class CraftingPanel extends javax.swing.JPanel {
     }
 }
    
-   private void loadMaterials() {
-
-    lblMaterial1Image.setIcon(null);
-    lblMaterial2Image.setIcon(null);
+  private void loadMaterials() {
 
     if (cmbItem.getSelectedItem() == null) {
         return;
@@ -220,143 +245,125 @@ public class CraftingPanel extends javax.swing.JPanel {
     String selectedEnchant =
             cmbEnchant.getSelectedItem().toString();
 
-    String selectedCategory =
-            cmbCategory.getSelectedItem().toString();
-
-    java.util.List<CraftItem> itemList = null;
-    String folder = "";
-
-    switch (selectedCategory) {
-
-        case "Herrero":
-            itemList = HerreroData.items;
-            folder = "herrero";
-            break;
-
-        case "Herrero Magico":
-            itemList = HerreroMagicoData.items;
-            folder = "herreromagico";
-            break;
-
-        case "Flechero":
-            itemList = FlecheroData.items;
-            folder = "flechero";
-            break;
-
-        case "Hojalatero":
-            itemList = HojalateroData.items;
-            folder = "hojalatero";
-            break;
-    }
-
-    if (itemList == null) {
-        return;
-    }
-
-    int materialSlot = 0;
-
-    for (CraftItem item : itemList) {
+    for (CraftItem item : getCurrentItems()) {
 
         if (item.getItemName().equals(selectedItem)) {
 
-            String[] materialNames = {
-                item.getMaterial1Name(),
-                item.getMaterial2Name(),
-              
-            };
+            // =========================
+            // MATERIAL 1
+            // =========================
 
-            int[] materialAmounts = {
-                item.getMaterial1Amount(),
-                item.getMaterial2Amount()
-            };
+            loadSingleMaterial(
+                    item.getMaterial1Name(),
+                    item.getMaterial1Amount(),
+                    lblMaterial1Image,
+                    lblMaterial1Quantity,
+                    selectedTier,
+                    selectedEnchant
+            );
 
-            for (int i = 0; i < materialNames.length; i++) {
+            // =========================
+            // MATERIAL 2
+            // =========================
 
-                if (materialAmounts[i] <= 0) {
-                    continue;
-                }
+            loadSingleMaterial(
+                    item.getMaterial2Name(),
+                    item.getMaterial2Amount(),
+                    lblMaterial2Image,
+                    lblMaterial2Quantity,
+                    selectedTier,
+                    selectedEnchant
+            );
 
-                String materialName =
-                        materialNames[i];
-
-                String imageName =
-                        materialName
-                        .replace(" ", "_")
-                        .toLowerCase();
-
-                imageName =
-                        selectedTier.toLowerCase()
-                        + "_"
-                        + imageName;
-
-                if (!selectedEnchant.equals(".0")) {
-
-                    String enchantLevel =
-                            selectedEnchant.replace(".", "");
-
-                    imageName =
-                            imageName + "@"
-                            + enchantLevel;
-                }
-
-                imageName += ".png";
-
-                java.net.URL imageURL =
-                        getClass().getResource(
-                                "/resources/materials/" + imageName
-                        );
-
-                System.out.println(imageURL);
-
-                if (imageURL == null) {
-                    continue;
-                }
-
-                ImageIcon icon =
-                        new ImageIcon(imageURL);
-
-                Image image =
-                        icon.getImage().getScaledInstance(
-                                80,
-                                80,
-                                Image.SCALE_SMOOTH
-                        );
-
-                if (materialSlot == 0) {
-
-                    lblMaterial1Image.setIcon(
-                            new ImageIcon(image)
-                    );
-
-                    lblMaterial1Quantity.setText(
-                            "x" + materialAmounts[i]
-                    );
-
-                    lblMaterial1BestPrice.setText(
-                            materialName
-                    );
-
-                } else if (materialSlot == 1) {
-
-                    lblMaterial2Image.setIcon(
-                            new ImageIcon(image)
-                    );
-
-                    lblMaterial2Quantity.setText(
-                            "x" + materialAmounts[i]
-                    );
-
-                    lblMaterial2BestPrice.setText(
-                            materialName
-                    );
-                }
-
-                materialSlot++;
-            }
-
-            break;
         }
+
     }
+
+}
+  
+  private void loadSingleMaterial(
+        String materialName,
+        int amount,
+        javax.swing.JLabel imageLabel,
+        javax.swing.JLabel quantityLabel,
+        String selectedTier,
+        String selectedEnchant
+) {
+
+    quantityLabel.setText(
+            materialName + " x" + amount
+    );
+
+    if (materialName.equals("N/A")) {
+
+        imageLabel.setIcon(null);
+        return;
+    }
+
+    String materialCode = "";
+
+    switch (materialName) {
+
+        case "Lingote":
+            materialCode = "METALBAR";
+            break;
+
+        case "Tabla":
+            materialCode = "PLANKS";
+            break;
+
+        case "Tela":
+            materialCode = "CLOTH";
+            break;
+
+        case "Cuero":
+            materialCode = "LEATHER";
+            break;
+    }
+
+    String imageName =
+            selectedTier + "_"
+            + materialCode;
+
+   if (!selectedEnchant.equals(".0")) {
+
+    String enchant =
+            selectedEnchant.replace(".", "");
+
+    imageName += "_LEVEL" + enchant;
+}
+
+    imageName += ".png";
+
+    System.out.println(imageName);
+
+    java.net.URL imageURL =
+            getClass().getResource(
+                    "/resources/materials/"
+                    + imageName
+            );
+
+    System.out.println(imageURL);
+
+    if (imageURL == null) {
+
+        System.out.println("NO EXISTE MATERIAL");
+        return;
+    }
+
+    ImageIcon icon =
+            new ImageIcon(imageURL);
+
+    Image image =
+            icon.getImage().getScaledInstance(
+                    80,
+                    80,
+                    Image.SCALE_SMOOTH
+            );
+
+    imageLabel.setIcon(
+            new ImageIcon(image)
+    );
 }
    
    private void loadMaterialSlot(
@@ -433,6 +440,8 @@ public class CraftingPanel extends javax.swing.JPanel {
 private void loadArtifact() {
 
     lblArtifactImage.setIcon(null);
+    lblArtifactName.setText("");
+    lblArtifactQuantity.setText("");
 
     if (cmbItem.getSelectedItem() == null) {
         return;
@@ -444,69 +453,82 @@ private void loadArtifact() {
     String selectedTier =
             cmbTier.getSelectedItem().toString();
 
-    String selectedCategory =
-            cmbCategory.getSelectedItem().toString();
-
-    java.util.List<CraftItem> itemList = null;
-
-    switch (selectedCategory) {
-
-        case "Herrero":
-            itemList = HerreroData.items;
-            break;
-
-        case "Herrero Magico":
-            itemList = HerreroMagicoData.items;
-            break;
-
-        case "Flechero":
-            itemList = FlecheroData.items;
-            break;
-
-        case "Hojalatero":
-            itemList = HojalateroData.items;
-            break;
-    }
-
-    if (itemList == null) {
-        return;
-    }
-
-    for (CraftItem item : itemList) {
+    for (CraftItem item : getCurrentItems()) {
 
         if (item.getItemName().equals(selectedItem)) {
 
+            // =========================
+            // VALIDAR SI TIENE ARTEFACTO
+            // =========================
+
             if (item.getArtifactAmount() <= 0) {
 
-                lblArtifactQuantity.setText("");
-                lblArtifactBestPrice.setText("");
                 return;
             }
+
+            // =========================
+            // NOMBRE EN ESPAÑOL
+            // =========================
 
             String artifactName =
                     item.getArtifactName();
 
+            // =========================
+            // NOMBRE BASE IMAGEN
+            // =========================
+
             String imageName =
-                    artifactName
-                    .replace(" ", "_")
-                    .toLowerCase();
+                    item.getArtifactImage();
+
+            // SI NO TIENE ARTEFACT_
+
+            if (!imageName.contains("ARTEFACT")) {
+
+                imageName =
+                        "ARTEFACT_"
+                        + imageName;
+            }
+
+            // SI NO TIENE TIER
+
+            if (!imageName.startsWith("T")) {
+
+                imageName =
+                        selectedTier
+                        + "_"
+                        + imageName;
+            }
+
+            // CAMBIAR TIER
 
             imageName =
-                    selectedTier.toLowerCase()
-                    + "_"
-                    + imageName
-                    + ".png";
+                    imageName.replaceFirst(
+                            "T[4-8]",
+                            selectedTier
+                    );
+
+            imageName += ".png";
+
+            System.out.println(imageName);
+
+            // =========================
+            // CARGAR IMAGEN
+            // =========================
 
             java.net.URL imageURL =
                     getClass().getResource(
-                            "/resources/artifacts/" + imageName
+                            "/resources/artifacts/"
+                            + imageName
                     );
 
             System.out.println(imageURL);
 
             if (imageURL == null) {
 
-                System.out.println("NO EXISTE ARTEFACTO");
+                System.out.println(
+                        "NO EXISTE ARTEFACTO"
+                );
+
                 return;
             }
 
@@ -524,13 +546,21 @@ private void loadArtifact() {
                     new ImageIcon(image)
             );
 
-            lblArtifactQuantity.setText(
-                    "x" + item.getArtifactAmount()
-            );
+            // =========================
+            // MOSTRAR DATOS
+            // =========================
 
-            lblArtifactBestPrice.setText(
+            lblArtifactName.setText(
                     artifactName
             );
+
+            lblArtifactQuantity.setText(
+                    "x"
+                    + item.getArtifactAmount()
+            );
+
+            lblArtifactImage.repaint();
+            lblArtifactImage.revalidate();
 
             break;
         }
@@ -931,6 +961,7 @@ private void loadArtifact() {
         lblArtifactName.setForeground(new java.awt.Color(255, 255, 255));
         lblArtifactName.setText("jLabel1");
         panelArtifact.add(lblArtifactName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 170, 30));
+        lblArtifactName.getAccessibleContext().setAccessibleDescription("");
 
         panelMaterials.add(panelArtifact, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 220, 220));
 
