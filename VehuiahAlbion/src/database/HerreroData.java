@@ -8,7 +8,7 @@ public class HerreroData {
     public static ArrayList<CraftItem> items = new ArrayList<>();
 
     static {
-
+                   // botas
        items.add(new CraftItem(
         "Botas de Caballero",
         "Herrero",

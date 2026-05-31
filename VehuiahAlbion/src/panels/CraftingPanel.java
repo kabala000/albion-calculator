@@ -13,6 +13,7 @@ import database.HerreroMagicoData;
 import database.FlecheroData;
 import database.HojalateroData;
 import java.util.List;
+import model.Calculos;
 
 
 
@@ -25,6 +26,7 @@ public class CraftingPanel extends javax.swing.JPanel {
         initComponents();
          loadItemsByCategory();
           loadItemImage();
+          updateCraftAmounts();
        
     }
  
@@ -566,6 +568,94 @@ private void loadArtifact() {
         }
     }
 }
+
+
+
+
+
+private void updateCraftAmounts() {
+
+    CraftItem item =
+            getSelectedCraftItem();
+
+    if (item == null) {
+        return;
+    }
+
+    int amount = 1;
+
+    try {
+
+        amount =
+                Integer.parseInt(
+                        txtAmount.getText()
+                );
+
+    } catch (Exception e) {
+
+        amount = 1;
+    }
+
+    int material1 =
+            Calculos.calcularCantidad(
+                    item.getMaterial1Amount(),
+                    amount
+            );
+
+    int material2 =
+            Calculos.calcularCantidad(
+                    item.getMaterial2Amount(),
+                    amount
+            );
+
+    int artefacto =
+            Calculos.calcularCantidad(
+                    item.getArtifactAmount(),
+                    amount
+            );
+
+    lblMaterial1Quantity.setText(
+            item.getMaterial1Name()
+            + " x"
+            + material1
+    );
+
+    lblMaterial2Quantity.setText(
+            item.getMaterial2Name()
+            + " x"
+            + material2
+    );
+
+    lblArtifactQuantity.setText(
+            "x" + artefacto
+    );
+
+    lblRestQuantity.setText(
+            "x" + artefacto
+    );
+}
+
+private CraftItem getSelectedCraftItem() {
+
+    if (cmbItem.getSelectedItem() == null) {
+        return null;
+    }
+
+    String selectedItem =
+            cmbItem.getSelectedItem().toString();
+
+    for (CraftItem item : getCurrentItems()) {
+
+        if (item.getItemName().equals(selectedItem)) {
+            return item;
+        }
+    }
+
+    return null;
+}
+
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -705,6 +795,11 @@ private void loadArtifact() {
         txtAmount.setForeground(new java.awt.Color(255, 255, 255));
         txtAmount.setText("1");
         txtAmount.addActionListener(this::txtAmountActionPerformed);
+        txtAmount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAmountKeyReleased(evt);
+            }
+        });
         panelSelector.add(txtAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 100, 38));
 
         add(panelSelector, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 420, 300));
@@ -991,6 +1086,11 @@ private void loadArtifact() {
     private void txtAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmountActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAmountActionPerformed
+
+    private void txtAmountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAmountKeyReleased
+     
+    updateCraftAmounts();   // aqui es para detectar la cantidad
+    }//GEN-LAST:event_txtAmountKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
