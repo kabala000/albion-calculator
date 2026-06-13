@@ -85,8 +85,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblLogo.setBackground(new java.awt.Color(200, 155, 60));
         lblLogo.setForeground(new java.awt.Color(200, 155, 60));
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
         lblLogo.setText("ALBION VEHUIAH");
-        panelMenu.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 30, 210, 50));
+        panelMenu.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 30, 210, 110));
 
         panelLinea.setBackground(new java.awt.Color(200, 155, 60));
 
@@ -101,37 +102,37 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGap(0, 2, Short.MAX_VALUE)
         );
 
-        panelMenu.add(panelLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 95, 180, 2));
+        panelMenu.add(panelLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 180, 2));
 
         btnInicio.setBackground(new java.awt.Color(200, 155, 60));
         btnInicio.setForeground(new java.awt.Color(20, 20, 20));
         btnInicio.setText("INICIO");
         btnInicio.addActionListener(this::btnInicioActionPerformed);
-        panelMenu.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 140, 200, 45));
+        panelMenu.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 200, 45));
 
         btnRefinado.setBackground(new java.awt.Color(47, 54, 64));
         btnRefinado.setForeground(new java.awt.Color(234, 234, 234));
         btnRefinado.setText("REFINADO");
         btnRefinado.addActionListener(this::btnRefinadoActionPerformed);
-        panelMenu.add(btnRefinado, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 195, 200, 45));
+        panelMenu.add(btnRefinado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 200, 45));
 
         btnCraft.setBackground(new java.awt.Color(47, 54, 64));
         btnCraft.setForeground(new java.awt.Color(234, 234, 234));
         btnCraft.setText("CRAFT");
         btnCraft.addActionListener(this::btnCraftActionPerformed);
-        panelMenu.add(btnCraft, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 250, 200, 45));
+        panelMenu.add(btnCraft, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 200, 45));
 
         btnMercado.setBackground(new java.awt.Color(47, 54, 64));
         btnMercado.setForeground(new java.awt.Color(234, 234, 234));
         btnMercado.setText("MERCADO");
         btnMercado.addActionListener(this::btnMercadoActionPerformed);
-        panelMenu.add(btnMercado, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 305, 200, 45));
+        panelMenu.add(btnMercado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 200, 45));
 
         btnConfiguracion.setBackground(new java.awt.Color(47, 54, 64));
         btnConfiguracion.setForeground(new java.awt.Color(234, 234, 234));
         btnConfiguracion.setText("CONFIGURACION");
         btnConfiguracion.addActionListener(this::btnConfiguracionActionPerformed);
-        panelMenu.add(btnConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 360, 200, 45));
+        panelMenu.add(btnConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 200, 45));
 
         lblVersion.setBackground(new java.awt.Color(120, 120, 120));
         lblVersion.setForeground(new java.awt.Color(120, 120, 120));

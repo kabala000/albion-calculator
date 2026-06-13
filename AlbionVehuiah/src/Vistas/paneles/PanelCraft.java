@@ -27,62 +27,17 @@ public class PanelCraft extends javax.swing.JPanel {
     private void initComponents() {
 
         lblTituloRefinado = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        panelParametros = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        panelResultados = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(37, 43, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTituloRefinado.setForeground(new java.awt.Color(200, 155, 60));
-        lblTituloRefinado.setText("REFINADO");
+        lblTituloRefinado.setText("Craft");
         add(lblTituloRefinado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
-
-        jLabel1.setForeground(new java.awt.Color(220, 220, 220));
-        jLabel1.setText("Calculadora de refinado de recursos");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
-
-        panelParametros.setBackground(new java.awt.Color(47, 54, 64));
-        panelParametros.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setText("Recurso:");
-        panelParametros.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 30, -1, -1));
-
-        add(panelParametros, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 500, 550));
-
-        panelResultados.setBackground(new java.awt.Color(47, 54, 64));
-
-        jLabel2.setText("RESULTADOS");
-
-        javax.swing.GroupLayout panelResultadosLayout = new javax.swing.GroupLayout(panelResultados);
-        panelResultados.setLayout(panelResultadosLayout);
-        panelResultadosLayout.setHorizontalGroup(
-            panelResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelResultadosLayout.createSequentialGroup()
-                .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(251, 251, 251))
-        );
-        panelResultadosLayout.setVerticalGroup(
-            panelResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelResultadosLayout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(jLabel2)
-                .addContainerGap(409, Short.MAX_VALUE))
-        );
-
-        add(panelResultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, 600, 550));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblTituloRefinado;
-    private javax.swing.JPanel panelParametros;
-    private javax.swing.JPanel panelResultados;
     // End of variables declaration//GEN-END:variables
 }
