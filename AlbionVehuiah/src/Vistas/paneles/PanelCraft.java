@@ -27,17 +27,423 @@ public class PanelCraft extends javax.swing.JPanel {
     private void initComponents() {
 
         lblTituloRefinado = new javax.swing.JLabel();
+        PanelConfig = new javax.swing.JPanel();
+        jLabel64 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel65 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel66 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel67 = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jLabel68 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jTextField2 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jCheckBox5 = new javax.swing.JCheckBox();
+        PanelItem = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        PanelLibros = new javax.swing.JPanel();
+        PanelLibros1 = new javax.swing.JPanel();
+        PanelMaterialCompra = new javax.swing.JPanel();
+        PanelLymhurst = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        PanelFortSterling = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        PanelMartlock = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        PanelThetford = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        PanelBridgewatch = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        PanelCaerleon = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        PanelLibros2 = new javax.swing.JPanel();
+        PanelLibros3 = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(37, 43, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTituloRefinado.setForeground(new java.awt.Color(200, 155, 60));
         lblTituloRefinado.setText("Craft");
-        add(lblTituloRefinado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+        add(lblTituloRefinado, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, -1, -1));
+
+        PanelConfig.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel64.setText("Categotia");
+        PanelConfig.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        PanelConfig.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 180, -1));
+
+        jLabel65.setText("Item");
+        PanelConfig.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        PanelConfig.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 180, -1));
+
+        jLabel66.setText("Tier");
+        PanelConfig.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 110, 20));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        PanelConfig.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 180, -1));
+
+        jLabel67.setText("Cantidad");
+        PanelConfig.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        PanelConfig.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 180, -1));
+
+        jLabel68.setText("Encantamiento");
+        PanelConfig.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField1.setText("0");
+        jTextField1.addActionListener(this::jTextField1ActionPerformed);
+        PanelConfig.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 180, -1));
+
+        jCheckBox1.setText("Bonos de Actividad");
+        jCheckBox1.addActionListener(this::jCheckBox1ActionPerformed);
+        PanelConfig.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+
+        jCheckBox2.setText("Bono de Ciudad");
+        PanelConfig.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+
+        jCheckBox3.setText("Foco");
+        PanelConfig.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+
+        jCheckBox4.setText("Bono de HO");
+        PanelConfig.add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+
+        jTextField2.setText("0");
+        PanelConfig.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, -1, -1));
+
+        jButton1.setText("Añadir");
+        PanelConfig.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 680, -1, -1));
+
+        jCheckBox5.setText("Llenar Libros");
+        PanelConfig.add(jCheckBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, -1));
+
+        add(PanelConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 155, 310, 720));
+
+        PanelItem.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel32.setText("Nombre");
+        PanelItem.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 110, 30));
+
+        jLabel33.setText("Material2");
+        PanelItem.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 90, 70));
+
+        jLabel34.setText("Material1");
+        PanelItem.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 90, 70));
+
+        jLabel35.setText("Art1");
+        PanelItem.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 90, 70));
+
+        jLabel36.setText("Art2");
+        PanelItem.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 90, 70));
+
+        jLabel38.setText("Cant");
+        PanelItem.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, -1));
+
+        jLabel39.setText("Cant");
+        PanelItem.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, -1, -1));
+
+        jLabel40.setText("Cant");
+        PanelItem.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, -1));
+
+        jLabel41.setText("CantidadItem");
+        PanelItem.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, -1, -1));
+
+        add(PanelItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 480, 300));
+
+        PanelLibros.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PanelLibros1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PanelLibros.add(PanelLibros1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 230, 370));
+
+        add(PanelLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 510, 230, 370));
+
+        PanelMaterialCompra.setBackground(new java.awt.Color(47, 54, 64));
+        PanelMaterialCompra.setLayout(new java.awt.GridLayout(3, 2, 20, 20));
+
+        PanelLymhurst.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("logo");
+        PanelLymhurst.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 15, 120, 120));
+
+        jLabel2.setText("Material1");
+        PanelLymhurst.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 225, 20));
+
+        jLabel3.setText("Material2");
+        PanelLymhurst.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 165, 215, 15));
+
+        jLabel4.setText("Art1");
+        PanelLymhurst.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 185, 215, 15));
+
+        jLabel5.setText("Art2");
+        PanelLymhurst.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 205, 215, 15));
+
+        PanelMaterialCompra.add(PanelLymhurst);
+
+        PanelFortSterling.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setText("logo");
+        PanelFortSterling.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 15, 120, 120));
+
+        jLabel44.setText("Material1");
+        PanelFortSterling.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 225, 20));
+
+        jLabel45.setText("Material2");
+        PanelFortSterling.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 165, 215, 15));
+
+        jLabel46.setText("Art1");
+        PanelFortSterling.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 185, 215, 15));
+
+        jLabel47.setText("Art2");
+        PanelFortSterling.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 205, 215, 15));
+
+        PanelMaterialCompra.add(PanelFortSterling);
+
+        PanelMartlock.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setText("logo");
+        PanelMartlock.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 15, 120, 120));
+
+        jLabel48.setText("Material1");
+        PanelMartlock.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 225, 20));
+
+        jLabel49.setText("Material2");
+        PanelMartlock.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 165, 215, 15));
+
+        jLabel50.setText("Art1");
+        PanelMartlock.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 185, 215, 15));
+
+        jLabel51.setText("Art2");
+        PanelMartlock.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 205, 215, 15));
+
+        PanelMaterialCompra.add(PanelMartlock);
+
+        PanelThetford.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setText("logo");
+        PanelThetford.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 15, 120, 120));
+
+        jLabel52.setText("Material1");
+        PanelThetford.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 225, 20));
+
+        jLabel53.setText("Material2");
+        PanelThetford.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 165, 215, 15));
+
+        jLabel54.setText("Art1");
+        PanelThetford.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 185, 215, 15));
+
+        jLabel55.setText("Art2");
+        PanelThetford.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 205, 215, 15));
+
+        PanelMaterialCompra.add(PanelThetford);
+
+        PanelBridgewatch.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel21.setText("logo");
+        PanelBridgewatch.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 15, 120, 120));
+
+        jLabel56.setText("Material1");
+        PanelBridgewatch.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 225, 20));
+
+        jLabel57.setText("Material2");
+        PanelBridgewatch.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 165, 215, 15));
+
+        jLabel58.setText("Art1");
+        PanelBridgewatch.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 185, 215, 15));
+
+        jLabel59.setText("Art2");
+        PanelBridgewatch.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 205, 215, 15));
+
+        PanelMaterialCompra.add(PanelBridgewatch);
+
+        PanelCaerleon.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel26.setText("logo");
+        PanelCaerleon.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 15, 120, 120));
+
+        jLabel60.setText("Material1");
+        PanelCaerleon.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 225, 20));
+
+        jLabel61.setText("Material2");
+        PanelCaerleon.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 165, 215, 15));
+
+        jLabel62.setText("Art1");
+        PanelCaerleon.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 185, 215, 15));
+
+        jLabel63.setText("Art2");
+        PanelCaerleon.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 205, 215, 15));
+
+        PanelMaterialCompra.add(PanelCaerleon);
+
+        add(PanelMaterialCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 100, 430, 790));
+
+        jLabel7.setForeground(new java.awt.Color(220, 220, 220));
+        jLabel7.setText("Mejor Ciudad Materiales");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 70, -1, -1));
+
+        jLabel8.setForeground(new java.awt.Color(220, 220, 220));
+        jLabel8.setText("Configuracion");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, -1, -1));
+
+        PanelLibros2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PanelLibros3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PanelLibros2.add(PanelLibros3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 230, 370));
+
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel31.setText("Item");
+        PanelLibros2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 150, 130));
+
+        jLabel37.setText("Cantidad de libros vacios ");
+        PanelLibros2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+
+        jLabel43.setText("Fama Unidad");
+        PanelLibros2.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+
+        jLabel69.setText("Fama Total");
+        PanelLibros2.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+
+        jLabel42.setText("Cantidad de libros llenos ");
+        PanelLibros2.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+
+        add(PanelLibros2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 560, 250, 260));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PanelBridgewatch;
+    private javax.swing.JPanel PanelCaerleon;
+    private javax.swing.JPanel PanelConfig;
+    private javax.swing.JPanel PanelFortSterling;
+    private javax.swing.JPanel PanelItem;
+    private javax.swing.JPanel PanelLibros;
+    private javax.swing.JPanel PanelLibros1;
+    private javax.swing.JPanel PanelLibros2;
+    private javax.swing.JPanel PanelLibros3;
+    private javax.swing.JPanel PanelLymhurst;
+    private javax.swing.JPanel PanelMartlock;
+    private javax.swing.JPanel PanelMaterialCompra;
+    private javax.swing.JPanel PanelThetford;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblTituloRefinado;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,7 +13,7 @@ import Vistas.paneles.PanelInicio;
 import Vistas.paneles.PanelRefinado;
 import Vistas.paneles.PanelCraft;
 import Vistas.paneles.PanelMercado;
-import Vistas.paneles.PanelConfiguracion;
+
 
 
 
@@ -181,8 +181,7 @@ mostrarPanel(new PanelMercado());        // TODO add your handling code here:
     }//GEN-LAST:event_btnMercadoActionPerformed
 
     private void btnConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfiguracionActionPerformed
-    mostrarPanel(new PanelConfiguracion());        // TODO add your handling code here:
-    // TODO add your handling code here:
+PanelConfiguracion miPanel = new PanelConfiguracion();
     }//GEN-LAST:event_btnConfiguracionActionPerformed
 
     /**
