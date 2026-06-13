@@ -81,7 +81,7 @@
                       <Component id="btnCloth" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                       <Component id="btnHide" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="690" max="32767" attributes="0"/>
+                      <EmptySpace pref="742" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -103,23 +103,35 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="btnWood">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jButton1"/>
+                <Property name="text" type="java.lang.String" value="wood"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnWoodActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnBar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jButton1"/>
+                <Property name="text" type="java.lang.String" value="Bar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnCloth">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jButton1"/>
+                <Property name="text" type="java.lang.String" value="Cloth"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClothActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnHide">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jButton1"/>
+                <Property name="text" type="java.lang.String" value="Hide"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHideActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -481,7 +493,7 @@
                       <Component id="btnUndo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       <Component id="btnSavePrices" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="740" max="32767" attributes="0"/>
+                      <EmptySpace pref="743" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -507,8 +519,11 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnUndo">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jButton1"/>
+                <Property name="text" type="java.lang.String" value="Limpiar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUndoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnSavePrices">
               <Properties>

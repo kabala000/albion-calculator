@@ -1,11 +1,9 @@
-
 package Vistas.paneles;
 
 /**
  * @author vehuiah
  */
 public class PanelConfiguracion extends javax.swing.JPanel {
-
 
     // ==========================================
     // VARIABLES GLOBALES Y MATRICES DE MEMORIA
@@ -26,49 +24,55 @@ public class PanelConfiguracion extends javax.swing.JPanel {
         initComponents();
         
         // Forzamos a que la primera vez que se abra muestre Madera (0) en todas las pestañas
-        cargarDatosTabla(tablaMartlock, 0);
-        cargarDatosTabla(tablaLymhurst, 1);
-        cargarDatosTabla(tablaFortSterling, 2);
-        cargarDatosTabla(tablaBridgewatch, 3);
-        cargarDatosTabla(tablaThetford, 4); // Corregido a 'tablaThetford'
+        java.awt.EventQueue.invokeLater(() -> {
+            cargarDatosTabla(tablaMartlock, 0);
+            cargarDatosTabla(tablaLymhurst, 1);
+            cargarDatosTabla(tablaFortSterling, 2);
+            cargarDatosTabla(tablaBridgewatch, 3);
+            cargarDatosTabla(tablaThetford, 4);
+        });
     }
     
     // ==========================================
     // MÉTODOS DE PROCESAMIENTO DE DATOS
     // ==========================================
     private void cargarDatosTabla(javax.swing.JTable tabla, int idCiudad) {
-        javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) tabla.getModel();
-        modelo.setRowCount(0); // Limpiamos la tabla por seguridad
+    if (tabla == null) return;
+    
+    javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) tabla.getModel();
+    modelo.setRowCount(0); // Limpiamos la tabla por seguridad
 
-        String[] nombresTiers = {
-            "T4.0", "T4.1", "T4.2", "T4.3", "T4.4",
-            "T5.0", "T5.1", "T5.2", "T5.3", "T5.4",
-            "T6.0", "T6.1", "T6.2", "T6.3", "T6.4",
-            "T7.0", "T7.1", "T7.2", "T7.3", "T7.4",
-            "T8.0", "T8.1", "T8.2", "T8.3", "T8.4"
-        };
-
-        for (int i = 0; i < 25; i++) {
-            // NOTA: Asegúrate de tener esta imagen en tu carpeta de recursos del proyecto,
-            // o cámbiala por una ruta válida para que no te lance NullPointerException.
-            javax.swing.ImageIcon icono;
-            try {
-                icono = new javax.swing.ImageIcon(getClass().getResource("/resources/icon_placeholder.png"));
-            } catch (Exception e) {
-                icono = null; // Si no encuentra la imagen, la celda queda vacía temporalmente sin romper el programa
-            }
-            
-            int precioManual = matrizPreciosManuales[materialActual][idCiudad][i];
-            String precioAPI = matrizPreciosAPI[materialActual][idCiudad][i] + "s";
-
-            // Añadimos la fila completa a la tabla
-            modelo.addRow(new Object[]{icono, nombresTiers[i], precioManual == 0 ? "" : precioManual, precioAPI});
-        }
+    // 1. Definimos las etiquetas de texto según el materialActual seleccionado
+    String nombreMaterial = "";
+    switch (materialActual) {
+        case 0: nombreMaterial = "Tablas"; break;
+        case 1: nombreMaterial = "Lingotes"; break;
+        case 2: nombreMaterial = "Telas"; break;
+        case 3: nombreMaterial = "Cueros"; break;
+        case 4: nombreMaterial = "Piedras"; break;
+        default: nombreMaterial = "Material"; break;
     }
 
+    String[] nombresTiers = {
+        "T4.0", "T4.1", "T4.2", "T4.3", "T4.4",
+        "T5.0", "T5.1", "T5.2", "T5.3", "T5.4",
+        "T6.0", "T6.1", "T6.2", "T6.3", "T6.4",
+        "T7.0", "T7.1", "T7.2", "T7.3", "T7.4",
+        "T8.0", "T8.1", "T8.2", "T8.3", "T8.4"
+    };
+
+    for (int i = 0; i < 25; i++) {
+        int precioManual = matrizPreciosManuales[materialActual][idCiudad][i];
+        String precioAPI = matrizPreciosAPI[materialActual][idCiudad][i] + "s";
+
+        // 2. Inyectamos la palabra dinámica en la primera columna (columna 0)
+        modelo.addRow(new Object[]{nombreMaterial, nombresTiers[i], precioManual == 0 ? "" : precioManual, precioAPI});
+    }
+}
+
+
     private void guardarDatosTemporales(javax.swing.JTable tabla, int idCiudad) {
-        // Validamos que la tabla tenga filas cargadas para evitar un NullPointerException
-        if (tabla.getRowCount() < 25) return; 
+        if (tabla == null || tabla.getRowCount() < 25) return; 
         
         for (int i = 0; i < 25; i++) {
             Object valorCelda = tabla.getValueAt(i, 2); // Columna 2 es Precio Manual
@@ -79,7 +83,7 @@ public class PanelConfiguracion extends javax.swing.JPanel {
                     matrizPreciosManuales[materialActual][idCiudad][i] = 0;
                 }
             } else {
-                matrizPreciosManuales[materialActual][idCiudad][i] = 0; // Si el usuario borra el precio, se guarda como 0
+                matrizPreciosManuales[materialActual][idCiudad][i] = 0;
             }
         }
     }
@@ -87,29 +91,32 @@ public class PanelConfiguracion extends javax.swing.JPanel {
     // ==========================================
     // ACCIONES DE COMPONENTES (EVENTOS)
     // ==========================================
-    // RECUERDA: Este método debe ser enlazado por NetBeans en la pestaña Design.
-    // Si lo hiciste por doble clic, asegúrate de que el nombre coincida exactamente.
-    private void btnClothActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // 1. Guardamos lo que el usuario tenía escrito en el material anterior para las 5 ciudades
+    public void alternarMaterial(int nuevoMaterialId) {
         guardarDatosTemporales(tablaMartlock, 0);
         guardarDatosTemporales(tablaLymhurst, 1);
         guardarDatosTemporales(tablaFortSterling, 2);
         guardarDatosTemporales(tablaBridgewatch, 3);
         guardarDatosTemporales(tablaThetford, 4);
 
-        // 2. Cambiamos el índice al nuevo material (Cloth = 2)
-        materialActual = 2;
+        this.materialActual = nuevoMaterialId;
 
-        // 3. Volvemos a renderizar las tablas con los datos de las Telas
         cargarDatosTabla(tablaMartlock, 0);
         cargarDatosTabla(tablaLymhurst, 1);
         cargarDatosTabla(tablaFortSterling, 2);
         cargarDatosTabla(tablaBridgewatch, 3);
         cargarDatosTabla(tablaThetford, 4);
-    }                                        
     }
-
-
+    
+    private javax.swing.JTable obtenerTablaPorId(int idCiudad) {
+    switch (idCiudad) {
+        case 0: return tablaMartlock;
+        case 1: return tablaLymhurst;
+        case 2: return tablaFortSterling;
+        case 3: return tablaBridgewatch;
+        case 4: return tablaThetford;
+        default: return null;
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -153,13 +160,17 @@ public class PanelConfiguracion extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(47, 54, 64));
         jPanel3.setPreferredSize(new java.awt.Dimension(1300, 80));
 
-        btnWood.setText("jButton1");
+        btnWood.setText("wood");
+        btnWood.addActionListener(this::btnWoodActionPerformed);
 
-        btnBar.setText("jButton1");
+        btnBar.setText("Bar");
+        btnBar.addActionListener(this::btnBarActionPerformed);
 
-        btnCloth.setText("jButton1");
+        btnCloth.setText("Cloth");
+        btnCloth.addActionListener(this::btnClothActionPerformed);
 
-        btnHide.setText("jButton1");
+        btnHide.setText("Hide");
+        btnHide.addActionListener(this::btnHideActionPerformed);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -174,7 +185,7 @@ public class PanelConfiguracion extends javax.swing.JPanel {
                 .addComponent(btnCloth)
                 .addGap(72, 72, 72)
                 .addComponent(btnHide)
-                .addContainerGap(690, Short.MAX_VALUE))
+                .addContainerGap(742, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,7 +375,8 @@ public class PanelConfiguracion extends javax.swing.JPanel {
 
         btnRefreshAPI.setText("REFRES aPI");
 
-        btnUndo.setText("jButton1");
+        btnUndo.setText("Limpiar");
+        btnUndo.addActionListener(this::btnUndoActionPerformed);
 
         btnSavePrices.setText("SAVE");
 
@@ -379,7 +391,7 @@ public class PanelConfiguracion extends javax.swing.JPanel {
                 .addComponent(btnUndo)
                 .addGap(55, 55, 55)
                 .addComponent(btnSavePrices)
-                .addContainerGap(740, Short.MAX_VALUE))
+                .addContainerGap(743, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -415,6 +427,78 @@ public class PanelConfiguracion extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnWoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWoodActionPerformed
+ alternarMaterial(0); // 0 = Madera        // TODO add your handling code here:
+    }//GEN-LAST:event_btnWoodActionPerformed
+
+    private void btnBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarActionPerformed
+    alternarMaterial(1);         // TODO add your handling code here:
+    }//GEN-LAST:event_btnBarActionPerformed
+
+    private void btnClothActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClothActionPerformed
+    alternarMaterial(2); // 2 = Telas
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClothActionPerformed
+
+    private void btnHideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHideActionPerformed
+alternarMaterial(3); // 3 = Cuero        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHideActionPerformed
+
+    private void btnUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUndoActionPerformed
+    // 1. Definimos las opciones que aparecerán como botones en la ventana emergente
+    Object[] opciones = {"Limpiar Tabla Actual", "Limpiar Todas las Tablas", "Cancelar"};
+    
+    // 2. Mostramos el cuadro de diálogo personalizado
+    int seleccion = javax.swing.JOptionPane.showOptionDialog(
+            this,
+            "¿Qué datos deseas restablecer a cero de forma manual?",
+            "Limpieza de Precios - VehuiahAlbion",
+            javax.swing.JOptionPane.YES_NO_CANCEL_OPTION,
+            javax.swing.JOptionPane.WARNING_MESSAGE,
+            null,
+            opciones,
+            opciones[0]
+    );
+
+    // 3. Evaluamos la respuesta del usuario
+    switch (seleccion) {
+        case 0: // Hizo clic en "Limpiar Tabla Actual"
+            int ciudadActiva = tabCiudades.getSelectedIndex(); // Detecta en qué pestaña de ciudad está parado
+            if (ciudadActiva != -1) {
+                for (int i = 0; i < 25; i++) {
+                    matrizPreciosManuales[materialActual][ciudadActiva][i] = 0;
+                }
+                // Refrescamos visualmente la tabla de la pestaña actual
+                javax.swing.JTable tablaActual = obtenerTablaPorId(ciudadActiva);
+                cargarDatosTabla(tablaActual, ciudadActiva);
+            }
+            break;
+
+        case 1: // Hizo clic en "Limpiar Todas las Tablas"
+            // Recorremos los 5 materiales, las 5 ciudades y las 25 filas para borrar todo del mapa
+            for (int mat = 0; mat < 5; mat++) {
+                for (int ciu = 0; ciu < 5; ciu++) {
+                    for (int fila = 0; fila < 25; fila++) {
+                        matrizPreciosManuales[mat][ciu][fila] = 0;
+                    }
+                }
+            }
+            // Refrescamos visualmente las 5 tablas de la pantalla
+            cargarDatosTabla(tablaMartlock, 0);
+            cargarDatosTabla(tablaLymhurst, 1);
+            cargarDatosTabla(tablaFortSterling, 2);
+            cargarDatosTabla(tablaBridgewatch, 3);
+            cargarDatosTabla(tablaThetford, 4);
+            
+            javax.swing.JOptionPane.showMessageDialog(this, "Todos los precios manuales han sido reiniciados.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            break;
+
+        default:
+            // Cancelar o cerrar la ventanita no hace nada, protegiendo tus datos
+            break;
+    }    // TODO add your handling code here:
+    }//GEN-LAST:event_btnUndoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
