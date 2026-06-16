@@ -17,6 +17,14 @@ public class PanelItemCola extends javax.swing.JPanel {
         initComponents();
     }
 
+    
+     public PanelItemCola(String nombre, int cantidad) {
+    initComponents();
+
+    lblNombreItem.setText(nombre);
+    lblCantidad.setText("Cantidad: " + cantidad);
+}
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +34,40 @@ public class PanelItemCola extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        lblNombreItem = new javax.swing.JLabel();
+        lblCantidad = new javax.swing.JLabel();
+        btnEliminar = new javax.swing.JButton();
+        lblImagenItem = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(42, 47, 58));
+        setPreferredSize(new java.awt.Dimension(260, 70));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblNombreItem.setForeground(new java.awt.Color(230, 230, 230));
+        lblNombreItem.setText("T7 Pechera Real");
+        add(lblNombreItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 140, 20));
+
+        lblCantidad.setForeground(new java.awt.Color(190, 190, 190));
+        lblCantidad.setText("Cantidad: 25");
+        add(lblCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 35, 120, 20));
+
+        btnEliminar.setBackground(new java.awt.Color(220, 60, 60));
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("x");
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 18, 30, 30));
+
+        lblImagenItem.setBackground(new java.awt.Color(60, 60, 60));
+        lblImagenItem.setForeground(new java.awt.Color(220, 220, 220));
+        lblImagenItem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblImagenItem.setText("Imagen");
+        add(lblImagenItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 48, 48));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JLabel lblCantidad;
+    private javax.swing.JLabel lblImagenItem;
+    private javax.swing.JLabel lblNombreItem;
     // End of variables declaration//GEN-END:variables
 }
