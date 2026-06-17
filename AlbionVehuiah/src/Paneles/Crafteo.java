@@ -3,14 +3,183 @@ package Paneles;
  *
  * @author vehuiah
  */
+
+import DAO.ItemDAO;
+import java.util.List;
+import Modelo.Item;
+import javax.swing.ImageIcon;
+import java.net.URL;
+import java.awt.Image;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.SwingWorker;
+import java.util.ArrayList;
+
 public class Crafteo extends javax.swing.JPanel {
 
     /**
      * Creates new form Crafteo
      */
-    public Crafteo() {
-        initComponents();
+  public Crafteo() {
+    initComponents();
+    cbxCategoria.setSelectedItem("Herrero");
+    cargarItems("Herrero");
+    actualizarDetalleItem();
+}
+    
+  @SuppressWarnings("unchecked")
+private void cargarItems(String categoria) {
+    ItemDAO dao = new ItemDAO();
+    List<Item> items = dao.obtenerItemsPorCategoria(categoria);
+
+    DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+    for (Item item : items) {
+        modelo.addElement(item);
     }
+
+    cbxItem.setModel((javax.swing.ComboBoxModel) modelo);
+
+    if (cbxItem.getItemCount() > 0) {
+        cbxItem.setSelectedIndex(0);
+    }
+}
+private static final String[] NOMBRES_MATERIAL = {"Lingotes", "Tablas", "Telas", "Cueros"};
+private static final String[] CODIGO_MATERIAL = {"METALBAR", "PLANKS", "CLOTH", "LEATHER"};
+
+private void actualizarDetalleItem() {
+    Object seleccionado = cbxItem.getSelectedItem();
+    if (!(seleccionado instanceof Item)) return;
+
+    Item itemSeleccionado = (Item) seleccionado;
+
+    lblNombreItem.setText(itemSeleccionado.getItem());
+    lblTipoItem.setText(itemSeleccionado.getTipoItem());
+
+    String tier = cbxTier.getSelectedItem().toString();
+    String encantamiento = cbxEncantamiento.getSelectedItem().toString();
+    String nivelEncant = encantamiento.replace(".", "");
+
+    // Imagen del item principal
+    String identificador = tier + "_" + itemSeleccionado.getUrlItem();
+    cargarImagenEn(lblImagenItem, construirUrlImagen(identificador, nivelEncant));
+
+    // Materiales activos
+    int[] cantidades = {
+        itemSeleccionado.getLingotes(),
+        itemSeleccionado.getTablas(),
+        itemSeleccionado.getTelas(),
+        itemSeleccionado.getCueros()
+    };
+
+    List<Integer> indicesActivos = new ArrayList<>();
+    for (int i = 0; i < cantidades.length; i++) {
+        if (cantidades[i] > 0) {
+            indicesActivos.add(i);
+        }
+    }
+
+    if (indicesActivos.size() >= 1) {
+        int idx = indicesActivos.get(0);
+        lblNombreMaterial1.setText(NOMBRES_MATERIAL[idx]);
+        lblCantidadMaterial1.setText(String.valueOf(cantidades[idx]));
+        String idMat1 = tier + "_" + CODIGO_MATERIAL[idx];
+cargarImagenEn(lblMaterial1, construirUrlMaterial(idMat1, nivelEncant));    } else {
+        lblNombreMaterial1.setText("-");
+        lblCantidadMaterial1.setText("0");
+        lblMaterial1.setIcon(null);
+        lblMaterial1.setText("IMG");
+    }
+
+    if (indicesActivos.size() >= 2) {
+        int idx = indicesActivos.get(1);
+        lblNombreMaterial2.setText(NOMBRES_MATERIAL[idx]);
+        lblCantidadMaterial2.setText(String.valueOf(cantidades[idx]));
+        String idMat2 = tier + "_" + CODIGO_MATERIAL[idx];
+cargarImagenEn(lblMaterial2, construirUrlMaterial(idMat2, nivelEncant));    } else {
+        lblNombreMaterial2.setText("-");
+        lblCantidadMaterial2.setText("0");
+        lblMaterial2.setIcon(null);
+        lblMaterial2.setText("IMG");
+    }
+
+    // Artefacto 1
+    if (itemSeleccionado.getArtefacto1() != null && !itemSeleccionado.getArtefacto1().isEmpty()) {
+        lblNombreArtefacto1.setText(itemSeleccionado.getArtefacto1());
+        lblCantidadArtefacto1.setText(String.valueOf(itemSeleccionado.getCantidadArtefacto1()));
+        String idArt1 = tier + "_ARTEFACT_" + itemSeleccionado.getUrlArtefacto1();
+        cargarImagenEn(lblArtefacto1, construirUrlImagen(idArt1, nivelEncant));
+    } else {
+        lblNombreArtefacto1.setText("-");
+        lblCantidadArtefacto1.setText("0");
+        lblArtefacto1.setIcon(null);
+        lblArtefacto1.setText("IMG");
+    }
+
+    // Artefacto 2
+    if (itemSeleccionado.getArtefacto2() != null && !itemSeleccionado.getArtefacto2().isEmpty()) {
+        lblNombreArtefacto2.setText(itemSeleccionado.getArtefacto2());
+        lblCantidadArtefacto2.setText(String.valueOf(itemSeleccionado.getCantidadArtefacto2()));
+        String idArt2 = tier + "_ARTEFACT_" + itemSeleccionado.getUrlArtefacto2();
+        cargarImagenEn(lblArtefacto2, construirUrlImagen(idArt2, nivelEncant));
+    } else {
+        lblNombreArtefacto2.setText("-");
+        lblCantidadArtefacto2.setText("0");
+        lblArtefacto2.setIcon(null);
+        lblArtefacto2.setText("IMG");
+    }
+}
+
+private String construirUrlImagen(String identificador, String nivelEncant) {
+    return "https://render.albiononline.com/v1/item/" 
+           + identificador 
+           + "@" + nivelEncant 
+           + ".png?size=217";
+}
+
+private void cargarImagenEn(javax.swing.JLabel label, String urlImagen) {
+    label.setIcon(null);
+    label.setText("Cargando...");
+
+    SwingWorker<ImageIcon, Void> worker = new SwingWorker<ImageIcon, Void>() {
+        @Override
+        protected ImageIcon doInBackground() throws Exception {
+            URL url = new URL(urlImagen);
+            ImageIcon icono = new ImageIcon(url);
+
+            int ancho = label.getWidth() > 0 ? label.getWidth() : 100;
+            int alto = label.getHeight() > 0 ? label.getHeight() : 100;
+            Image imagenEscalada = icono.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+
+            return new ImageIcon(imagenEscalada);
+        }
+
+        @Override
+        protected void done() {
+            try {
+                ImageIcon resultado = get();
+                label.setIcon(resultado);
+                label.setText("");
+                label.revalidate();
+                label.repaint();
+            } catch (Exception e) {
+                label.setIcon(null);
+                label.setText("Sin imagen");
+            }
+        }
+    };
+
+    worker.execute();
+}
+
+private String construirUrlMaterial(String identificadorBase, String nivelEncant) {
+    String sufijo = "";
+    if (!nivelEncant.equals("0")) {
+        sufijo = "_LEVEL" + nivelEncant;
+    }
+    return "https://render.albiononline.com/v1/item/" 
+           + identificadorBase 
+           + sufijo 
+           + ".png?size=217";
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,6 +260,7 @@ public class Crafteo extends javax.swing.JPanel {
         cbxEncantamiento.setBackground(new java.awt.Color(15, 23, 43));
         cbxEncantamiento.setFont(new java.awt.Font("DejaVu Sans Condensed", 0, 15)); // NOI18N
         cbxEncantamiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { ".0", ".1", ".2", ".3", ".4" }));
+        cbxEncantamiento.addItemListener(this::cbxEncantamientoItemStateChanged);
         cbxEncantamiento.addActionListener(this::cbxEncantamientoActionPerformed);
         jPanel2.add(cbxEncantamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 180, -1));
 
@@ -106,12 +276,14 @@ public class Crafteo extends javax.swing.JPanel {
 
         cbxItem.setBackground(new java.awt.Color(15, 23, 43));
         cbxItem.setFont(new java.awt.Font("DejaVu Sans Condensed", 0, 15)); // NOI18N
+        cbxItem.addItemListener(this::cbxItemItemStateChanged);
         cbxItem.addActionListener(this::cbxItemActionPerformed);
         jPanel2.add(cbxItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 380, -1));
 
         cbxTier.setBackground(new java.awt.Color(15, 23, 43));
         cbxTier.setFont(new java.awt.Font("DejaVu Sans Condensed", 0, 15)); // NOI18N
         cbxTier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "T4", "T5", "T6", "T7", "T8" }));
+        cbxTier.addItemListener(this::cbxTierItemStateChanged);
         cbxTier.addActionListener(this::cbxTierActionPerformed);
         jPanel2.add(cbxTier, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 180, -1));
 
@@ -129,6 +301,7 @@ public class Crafteo extends javax.swing.JPanel {
         cbxCategoria.setBackground(new java.awt.Color(15, 23, 43));
         cbxCategoria.setFont(new java.awt.Font("DejaVu Sans Condensed", 0, 15)); // NOI18N
         cbxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Herrero", "Flechero", "Herrero Magico", " " }));
+        cbxCategoria.addItemListener(this::cbxCategoriaItemStateChanged);
         cbxCategoria.addActionListener(this::cbxCategoriaActionPerformed);
         jPanel2.add(cbxCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 380, -1));
 
@@ -193,6 +366,7 @@ public class Crafteo extends javax.swing.JPanel {
         lblNombreItem.setText("NOMBRE ITM");
         PanelInventario.add(lblNombreItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 150, 30));
 
+        lblImagenItem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblImagenItem.setText("IMG");
         lblImagenItem.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(1, 70, 58), 2, true));
         PanelInventario.add(lblImagenItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 150, 150));
@@ -356,6 +530,31 @@ public class Crafteo extends javax.swing.JPanel {
     private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantidadActionPerformed
+
+    private void cbxCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxCategoriaItemStateChanged
+ if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+        String categoriaSeleccionada = cbxCategoria.getSelectedItem().toString();
+        cargarItems(categoriaSeleccionada);
+    }
+    }//GEN-LAST:event_cbxCategoriaItemStateChanged
+
+    private void cbxTierItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxTierItemStateChanged
+    if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+        actualizarDetalleItem();
+    }    // TODO add your handling code here:
+    }//GEN-LAST:event_cbxTierItemStateChanged
+
+    private void cbxEncantamientoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxEncantamientoItemStateChanged
+     if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+        actualizarDetalleItem();
+    }    // TODO add your handling code here:
+    }//GEN-LAST:event_cbxEncantamientoItemStateChanged
+
+    private void cbxItemItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxItemItemStateChanged
+ if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+        actualizarDetalleItem();
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxItemItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,12 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
 /**
- *
+ 
  * @author vehuiah
  */
+import Conexion.Conexion;
+import Paneles.Crafteo;
+import Paneles.Inventario;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class VentanaPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
@@ -16,10 +19,38 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(null); // Poner en el centro
+        listarTablas();
     }
-
-
     
+    // Método para cambiar el panel mostrado
+private void mostrarPanel(javax.swing.JPanel panel) {
+    PanelContenido.removeAll();
+    panel.setPreferredSize(new java.awt.Dimension(1400, 800));
+    PanelContenido.add(panel, java.awt.BorderLayout.CENTER);
+    PanelContenido.revalidate();
+    PanelContenido.repaint();
+}
+
+
+public static void listarTablas() {
+    String sql = "SELECT name FROM sqlite_master WHERE type='table'";
+    
+    try (Connection con = Conexion.getConexion();
+         PreparedStatement ps = con.prepareStatement(sql);
+         ResultSet rs = ps.executeQuery()) {
+
+        System.out.println("Tablas encontradas:");
+        while (rs.next()) {
+            System.out.println("- " + rs.getString("name"));
+        }
+
+    } catch (SQLException e) {
+        System.out.println("Error listando tablas: " + e.getMessage());
+    }
+}
+    
+
     
     
     
@@ -42,6 +73,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1600, 900));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -96,13 +128,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jButton1.setText("GESTION DE PRECIOS");
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 160, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 200, 900));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 200, 800));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
-
+mostrarPanel(new Inventario());
     }//GEN-LAST:event_btnInventarioActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
@@ -114,7 +146,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_INICIO2ActionPerformed
 
     private void btnCrafteoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrafteoActionPerformed
-
+ mostrarPanel(new Crafteo());
     }//GEN-LAST:event_btnCrafteoActionPerformed
 
     private void INICIO4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_INICIO4ActionPerformed
