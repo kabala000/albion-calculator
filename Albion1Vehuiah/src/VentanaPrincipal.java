@@ -2,12 +2,25 @@
 /*
  * @author vehuiah
  */
+import database.DatabaseConnection;
 import Paneles.Inventario;
+import Paneles.Crafteo;
+
 
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     public VentanaPrincipal() {
         initComponents();
+        
+        
+        //CONEXION CON LA BASE DE DATOS database.db
+        if (DatabaseConnection.conectar() != null) {
+    System.out.println("Base de datos conectada");
+     System.out.println("Panel Crafteo cargado");
+    
+         System.out.println(DatabaseConnection.obtenerItemsHerrero().size());
+}
+
     }
    
 
@@ -126,7 +139,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_INICIO2ActionPerformed
 
     private void btnCrafteoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrafteoActionPerformed
-        // TODO add your handling code here:
+
+  Crafteo panel = new Crafteo();
+
+    PanelContenido.removeAll();
+    PanelContenido.add(panel, java.awt.BorderLayout.CENTER);
+
+    PanelContenido.revalidate();
+    PanelContenido.repaint();   
+    panel.setPreferredSize(new java.awt.Dimension(1400, 800));// TODO add your handling code here:
     }//GEN-LAST:event_btnCrafteoActionPerformed
 
     private void INICIO4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_INICIO4ActionPerformed
