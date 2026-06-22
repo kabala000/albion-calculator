@@ -1,0 +1,19 @@
+{
+  "collections": {
+    "albion_sync": {
+      "syncId": {
+        "activeCharName": "string",
+        "characters": "array",
+        "globalPrices": "object",
+        "activeTheme": "string",
+        "activeTemplate": "string",
+        "globalPremium": "boolean",
+        "discountFromInventory": "boolean",
+        "inventories": "object",
+        "queues": "object",
+        "histories": "object",
+        "updatedAt": "timestamp"
+      }
+    }
+  }
+}
