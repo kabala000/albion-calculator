@@ -1,6 +1,0 @@
-{
-  "name": "Albion Online Crafting & Capital Manager",
-  "description": "Visual design & detailed calculator for Albion Online crafting, capital tracking, profit margins, purchase planning, and inventory management.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
